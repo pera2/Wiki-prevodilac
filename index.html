@@ -125,6 +125,17 @@
     const langSelect = document.getElementById('langSelect');
     const customLangInput = document.getElementById('customLang');
 
+// Аутоматско попуњавање наслова из URL параметра
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const titleParam = urlParams.get('wikiTitle');
+    if (titleParam) {
+        document.getElementById('articleInput').value = decodeURIComponent(titleParam);
+        // Опционо: Аутоматски клик на "Учитај чланак"
+        // document.getElementById('importBtn').click();
+    }
+};
+    
     function updateStatus(msg, type) {
         statusDiv.style.display = "block";
         statusDiv.innerHTML = msg;
@@ -278,4 +289,5 @@
 </script>
 
 </body>
+
 </html>
